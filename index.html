@@ -469,8 +469,8 @@
             </svg>
           </a>
 
-          <!-- Instagram: FIX SUPER ROBUSTO (deep link app + fallback web) -->
-        <a class="soc" id="igLink" href="https://www.instagram.com/planimetrio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+         <!-- Instagram (stabile su tutti: apre sempre il profilo web corretto, senza loop) -->
+<a class="soc" href="https://www.instagram.com/planimetrio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
   <svg class="ig" viewBox="0 0 24 24" aria-hidden="true">
     <rect x="4" y="4" width="16" height="16" rx="4"></rect>
     <circle cx="12" cy="12" r="3.5"></circle>
@@ -526,39 +526,3 @@
       </a>
     </div>
   </div>
-
-  <!-- Instagram deep link robusto: tenta app, fallback web -->
-<script>
-(function(){
-  var ig = document.getElementById('igLink');
-  if(!ig) return;
-
-  ig.addEventListener('click', function(e){
-    e.preventDefault();
-
-    var webUrl = "https://www.instagram.com/planimetrio/";
-    var isAndroid = /Android/i.test(navigator.userAgent);
-
-    // ANDROID: usa Intent (più affidabile anche dentro browser IG/FB)
-    if(isAndroid){
-      var intentUrl =
-        "intent://instagram.com/_u/planimetrio/#Intent" +
-        ";package=com.instagram.android" +
-        ";scheme=https" +
-        ";S.browser_fallback_url=" + encodeURIComponent(webUrl) +
-        ";end";
-      window.location.href = intentUrl;
-      return;
-    }
-
-    // iOS/altro: prova app scheme, poi fallback web
-    var appUrl = "instagram://user?username=planimetrio";
-    window.location.href = appUrl;
-
-    setTimeout(function(){
-      window.location.href = webUrl;
-    }, 900);
-  });
-})();
-</script>
-
