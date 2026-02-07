@@ -470,13 +470,13 @@
           </a>
 
           <!-- Instagram: FIX SUPER ROBUSTO (deep link app + fallback web) -->
-          <a class="soc" id="igLink" href="https://www.instagram.com/planimetrio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg class="ig" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="4" y="4" width="16" height="16" rx="4"></rect>
-              <circle cx="12" cy="12" r="3.5"></circle>
-              <circle cx="17.2" cy="6.8" r="1"></circle>
-            </svg>
-          </a>
+        <a class="soc" id="igLink" href="https://www.instagram.com/planimetrio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+  <svg class="ig" viewBox="0 0 24 24" aria-hidden="true">
+    <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+    <circle cx="12" cy="12" r="3.5"></circle>
+    <circle cx="17.2" cy="6.8" r="1"></circle>
+  </svg>
+</a>
 
           <!-- TikTok -->
           <a class="soc" href="https://www.tiktok.com/@planimetrio" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
@@ -528,27 +528,37 @@
   </div>
 
   <!-- Instagram deep link robusto: tenta app, fallback web -->
-  <script>
-    (function(){
-      var ig = document.getElementById('igLink');
-      if(!ig) return;
+<script>
+(function(){
+  var ig = document.getElementById('igLink');
+  if(!ig) return;
 
-      ig.addEventListener('click', function(e){
-        var webUrl = "https://www.instagram.com/planimetrio/";
-        var appUrl = "instagram://user?username=planimetrio";
+  ig.addEventListener('click', function(e){
+    e.preventDefault();
 
-        // gestiamo noi per ridurre bug nei browser in-app (IG/FB)
-        e.preventDefault();
+    var webUrl = "https://www.instagram.com/planimetrio/";
+    var isAndroid = /Android/i.test(navigator.userAgent);
 
-        // prova ad aprire l'app sul profilo
-        window.location.href = appUrl;
+    // ANDROID: usa Intent (più affidabile anche dentro browser IG/FB)
+    if(isAndroid){
+      var intentUrl =
+        "intent://instagram.com/_u/planimetrio/#Intent" +
+        ";package=com.instagram.android" +
+        ";scheme=https" +
+        ";S.browser_fallback_url=" + encodeURIComponent(webUrl) +
+        ";end";
+      window.location.href = intentUrl;
+      return;
+    }
 
-        // fallback: se non va, apre il profilo web giusto
-        setTimeout(function(){
-          window.location.href = webUrl;
-        }, 900);
-      });
-    })();
-  </script>
-</body>
-</html>
+    // iOS/altro: prova app scheme, poi fallback web
+    var appUrl = "instagram://user?username=planimetrio";
+    window.location.href = appUrl;
+
+    setTimeout(function(){
+      window.location.href = webUrl;
+    }, 900);
+  });
+})();
+</script>
+
