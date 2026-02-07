@@ -6,13 +6,12 @@
   <title>Francesco Anniballi | RE/MAX</title>
   <meta name="description" content="Biglietto da visita digitale - Francesco Anniballi, RE/MAX Key House Group - Planimetrio" />
 
-  <!-- Social preview (quando condividi il link) -->
+  <!-- Open Graph (preview più stabile su Facebook/Instagram/WhatsApp) -->
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
   <meta property="og:title" content="Francesco Anniballi | RE/MAX" />
   <meta property="og:description" content="Valutazioni accurate · Strategia di vendita · Supporto fino al rogito." />
   <meta property="og:url" content="https://francescoanniballi.github.io/biglietto-francesco/" />
-  <!-- Se vuoi una preview immagine migliore: crea un file "og.jpg" e caricalo in repo -->
-  <!-- <meta property="og:image" content="https://francescoanniballi.github.io/biglietto-francesco/og.jpg" /> -->
 
   <style>
     :root{
@@ -54,6 +53,7 @@
       overflow:hidden;
     }
 
+    /* Logo */
     .logo-wrap{
       display:flex;
       justify-content:center;
@@ -67,6 +67,7 @@
       display:block;
     }
 
+    /* Hero */
     .hero{
       position:relative;
       padding:18px 18px 22px;
@@ -75,6 +76,7 @@
       overflow:hidden;
     }
 
+    /* background image with opacity */
     .hero::before{
       content:"";
       position:absolute;
@@ -86,7 +88,25 @@
       z-index:0;
     }
 
-    .hero > *{position:relative;z-index:1;}
+    .hero > *{position:relative; z-index:1;}
+
+    .base-band{
+      background: linear-gradient(90deg, #0B1220, var(--remax-blue));
+      padding:12px 18px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+    .base-band .mini{
+      color:rgba(255,255,255,.85);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.02em;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      text-align:center;
+    }
+    .base-band .dot{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.65);}
 
     .avatar{
       width:164px;height:164px;border-radius:999px;
@@ -118,6 +138,7 @@
       line-height:1.55;
     }
 
+    /* Buttons */
     .actions{
       padding:14px 18px 18px;
       display:grid;
@@ -162,15 +183,22 @@
       background:#fff;
     }
 
-    .hint{
-      margin-top:6px;
+    /* Hint (mostrato SOLO in app browser) */
+    .hint-inapp{
+      display:none;
+      margin-top:2px;
+      padding:10px 12px;
+      border:1px dashed rgba(0,61,165,.25);
+      border-radius:14px;
+      background:rgba(0,61,165,.04);
+      color:var(--muted);
       font-size:12.5px;
       line-height:1.35;
-      color:var(--muted);
       text-align:center;
     }
-    .hint a{color:inherit}
+    .hint-inapp a{color:var(--remax-blue); font-weight:900; text-decoration:underline}
 
+    /* Sections */
     .section{
       border-top:1px solid var(--line);
       padding:18px;
@@ -212,6 +240,7 @@
     .tile a{color:inherit;text-decoration:none}
     .tile a:hover{text-decoration:underline}
 
+    /* Inline icons (mono) */
     .i{
       width:18px;height:18px;
       stroke:var(--remax-blue);
@@ -222,6 +251,7 @@
     }
     .i.white{stroke:#fff}
 
+    /* Social round icons – ALWAYS 4 in one row */
     .social-row{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
@@ -251,6 +281,7 @@
       .soc svg{width:20px;height:20px}
     }
 
+    /* Sticky bar (Android-safe) */
     .sticky{
       position:fixed;
       left:0; right:0; bottom:0;
@@ -322,35 +353,45 @@
 
       <div class="hero">
         <img class="avatar" src="./erewrq.png" alt="Foto profilo">
+
         <h1>Francesco Anniballi</h1>
         <div class="role">RE/MAX Key House Group · Planimetrio</div>
-        <div class="sub">Valutazioni accurate · Strategia di vendita · Supporto fino al rogito.</div>
+
+        <div class="sub">
+          Valutazioni accurate · Strategia di vendita · Supporto fino al rogito.
+        </div>
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="tel:+393292628540" aria-label="Chiama Francesco Anniballi">Chiama</a>
+        <a class="btn primary" href="tel:+393292628540">
+          <svg class="i white" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Chiama
+        </a>
 
-        <a class="btn secondary"
-           href="https://wa.me/393292628540"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Apri WhatsApp">
+        <a class="btn secondary" href="https://wa.me/393292628540" target="_blank" rel="noopener noreferrer">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="2" width="14" height="20" rx="2"/>
+            <path d="M12 18h.01"/>
+          </svg>
           WhatsApp
         </a>
 
-        <a class="btn"
-           href="./francesco-anniballi.vcf"
-           download="Francesco-Anniballi.vcf"
-           aria-label="Scarica vCard">
+        <a class="btn" href="./francesco-anniballi.vcf" download="Francesco-Anniballi.vcf">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12"/>
+            <path d="M7 10l5 5 5-5"/>
+            <path d="M5 21h14"/>
+          </svg>
           Salva contatto
         </a>
 
-        <div class="hint">
-          Se arrivi da Instagram/Facebook e il contatto non si apre, usa ⋯ → <b>Apri nel browser</b> (Safari/Chrome).
+        <!-- Questo appare SOLO dentro Instagram/Facebook in-app browser -->
+        <div id="inappHint" class="hint-inapp">
+          Se arrivi da Instagram/Facebook e il contatto non si apre, premi <b>⋯</b> e scegli <b>“Apri nel browser”</b> (Safari/Chrome).
           <br>
-          <a href="https://francescoanniballi.github.io/biglietto-francesco/" target="_blank" rel="noopener noreferrer">
-            Apri nel browser
-          </a>
+          <a href="https://francescoanniballi.github.io/biglietto-francesco/" target="_blank" rel="noopener noreferrer">Apri nel browser</a>
         </div>
       </div>
 
@@ -358,6 +399,9 @@
         <h2>Contatti</h2>
         <div class="grid">
           <div class="tile">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
             <div>
               <b>Cellulare</b>
               <div class="small"><a href="tel:+393292628540">+39 329 262 8540</a></div>
@@ -365,6 +409,10 @@
           </div>
 
           <div class="tile">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h16v16H4z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
             <div>
               <b>Email</b>
               <div class="small"><a href="mailto:francesco.anniballi@remax.it">francesco.anniballi@remax.it</a></div>
@@ -372,6 +420,11 @@
           </div>
 
           <div class="tile">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
             <div>
               <b>Sito</b>
               <div class="small"><a href="https://keyhousegroup.it" target="_blank" rel="noopener noreferrer">keyhousegroup.it</a></div>
@@ -384,34 +437,49 @@
         <h2>Posizioni</h2>
         <div class="grid">
           <div class="tile">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+              <circle cx="12" cy="11" r="2"/>
+            </svg>
             <div>
               <b>Viale Francesco Caltagirone 436</b>
               <div class="small">00132 · Roma</div>
               <div class="small">
-                <a href="https://www.google.com/maps/search/?api=1&query=Viale+Francesco+Caltagirone+436+Roma"
-                   target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Viale+Francesco+Caltagirone+436+Roma" target="_blank" rel="noopener noreferrer">
+                  Apri su Google Maps
+                </a>
               </div>
             </div>
           </div>
 
           <div class="tile">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+              <circle cx="12" cy="11" r="2"/>
+            </svg>
             <div>
               <b>Via Giovanni Nicotera 31</b>
               <div class="small">00195 · Roma</div>
               <div class="small">
-                <a href="https://www.google.com/maps/search/?api=1&query=Via+Giovanni+Nicotera+31+Roma"
-                   target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Via+Giovanni+Nicotera+31+Roma" target="_blank" rel="noopener noreferrer">
+                  Apri su Google Maps
+                </a>
               </div>
             </div>
           </div>
 
           <div class="tile">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/>
+              <circle cx="12" cy="11" r="2"/>
+            </svg>
             <div>
               <b>Piazza dei Mirti 27</b>
               <div class="small">00172 · Roma</div>
               <div class="small">
-                <a href="https://www.google.com/maps/search/?api=1&query=Piazza+dei+Mirti+27+Roma"
-                   target="_blank" rel="noopener noreferrer">Apri su Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Piazza+dei+Mirti+27+Roma" target="_blank" rel="noopener noreferrer">
+                  Apri su Google Maps
+                </a>
               </div>
             </div>
           </div>
@@ -421,8 +489,9 @@
       <div class="section">
         <h2>Trovami su</h2>
         <div class="social-row">
-          <!-- Facebook: evita /share/... -->
-          <a class="soc" href="https://www.facebook.com/planimetrio" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+
+          <!-- Facebook: /planimetrio è "contenuto non disponibile" → uso link share funzionante -->
+          <a class="soc" href="https://www.facebook.com/share/1CD4kNnesM/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M14.5 8.5H16V6h-1.5C12.6 6 11.5 7.2 11.5 9v2H10v2.7h1.5V21h2.8v-7.3H16l.4-2.7h-2.1V9.3c0-.5.3-.8.8-.8z"/>
             </svg>
@@ -445,6 +514,7 @@
               <path d="M6.5 6.5A1.5 1.5 0 1 1 6.5 3a1.5 1.5 0 0 1 0 3.5zM5 8h3v11H5V8zm5 0h2.9v1.5h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5V19h-3v-5.4c0-1.3 0-2.9-1.8-2.9s-2.1 1.4-2.1 2.8V19h-3V8z"/>
             </svg>
           </a>
+
         </div>
       </div>
 
@@ -453,19 +523,43 @@
 
   <div class="sticky" aria-label="Azioni rapide">
     <div class="inner">
-      <a class="sbtn primary" href="tel:+393292628540" aria-label="Chiama">
+      <a class="sbtn primary" href="tel:+393292628540">
+        <svg class="i white" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
         <span class="lbl">Chiama</span>
       </a>
 
-      <a class="sbtn" href="https://wa.me/393292628540" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <a class="sbtn" href="https://wa.me/393292628540" target="_blank" rel="noopener noreferrer">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="5" y="2" width="14" height="20" rx="2"/>
+          <path d="M12 18h.01"/>
+        </svg>
         <span class="lbl">WhatsApp</span>
       </a>
 
-      <a class="sbtn" href="./francesco-anniballi.vcf" download="Francesco-Anniballi.vcf" aria-label="Scarica contatto">
+      <a class="sbtn" href="./francesco-anniballi.vcf" download="Francesco-Anniballi.vcf">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3v12"/>
+          <path d="M7 10l5 5 5-5"/>
+          <path d="M5 21h14"/>
+        </svg>
         <span class="lbl">Contatto</span>
       </a>
     </div>
   </div>
+
+  <script>
+    (function(){
+      var ua = navigator.userAgent || "";
+      var isInApp = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|FB4A/i.test(ua);
+      if(isInApp){
+        var el = document.getElementById('inappHint');
+        if(el) el.style.display = 'block';
+      }
+    })();
+  </script>
 </body>
 </html>
+
 
