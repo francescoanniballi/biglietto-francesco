@@ -87,6 +87,33 @@
   position:relative;
   z-index:1;
 }
+.base-band{
+  background: linear-gradient(90deg, #0B1220, var(--remax-blue));
+  padding:12px 18px;
+  border-top:1px solid rgba(255,255,255,.10);
+}
+
+.base-band .mini{
+  color:rgba(255,255,255,.85);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.02em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-align:center;
+}
+.base-band .dot{
+  width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.65);
+}
+<div class="base-band">
+  <div class="mini">
+    <span>Roma · Valutazioni · Vendita</span>
+    <span class="dot"></span>
+    <span>RE/MAX Key House Group</span>
+  </div>
+</div>
 
     .avatar{
       width:164px;height:164px;border-radius:999px;
